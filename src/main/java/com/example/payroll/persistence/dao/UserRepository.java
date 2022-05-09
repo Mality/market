@@ -1,5 +1,6 @@
-package com.example.payroll.core.user;
+package com.example.payroll.persistence.dao;
 
+import com.example.payroll.persistence.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

@@ -1,7 +1,7 @@
 package com.example.payroll;
 
-import com.example.payroll.core.user.UserRepository;
-import com.example.payroll.core.order.OrderRepository;
+import com.example.payroll.persistence.dao.UserRepository;
+import com.example.payroll.persistence.dao.OrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

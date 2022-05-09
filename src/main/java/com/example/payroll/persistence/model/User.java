@@ -1,7 +1,6 @@
-package com.example.payroll.core.user;
+package com.example.payroll.persistence.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.Objects;

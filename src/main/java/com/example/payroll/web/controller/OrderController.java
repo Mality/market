@@ -1,13 +1,13 @@
-package com.example.payroll.api.order;
+package com.example.payroll.web.controller;
 
-import com.example.payroll.api.exceptions.MethodNotAllowedException;
-import com.example.payroll.api.exceptions.NotEnoughUserBalanceException;
-import com.example.payroll.api.exceptions.OrderNotFoundException;
-import com.example.payroll.application.order.OrdersCollectionAssembler;
-import com.example.payroll.core.order.Order;
-import com.example.payroll.application.order.OrderModelAssembler;
-import com.example.payroll.application.order.OrderService;
-import com.example.payroll.core.order.OrderRepository;
+import com.example.payroll.web.error.MethodNotAllowedException;
+import com.example.payroll.web.error.NotEnoughUserBalanceException;
+import com.example.payroll.web.error.OrderNotFoundException;
+import com.example.payroll.web.assembler.OrdersCollectionAssembler;
+import com.example.payroll.persistence.model.Order;
+import com.example.payroll.web.assembler.OrderModelAssembler;
+import com.example.payroll.service.OrderService;
+import com.example.payroll.persistence.dao.OrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.CollectionModel;

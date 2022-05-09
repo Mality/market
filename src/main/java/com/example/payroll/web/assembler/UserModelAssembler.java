@@ -1,7 +1,7 @@
-package com.example.payroll.application.user;
+package com.example.payroll.web.assembler;
 
-import com.example.payroll.api.user.UserController;
-import com.example.payroll.core.user.User;
+import com.example.payroll.web.controller.UserController;
+import com.example.payroll.persistence.model.User;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;

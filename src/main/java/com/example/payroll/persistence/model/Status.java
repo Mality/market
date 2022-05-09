@@ -1,4 +1,4 @@
-package com.example.payroll.core.order;
+package com.example.payroll.persistence.model;
 
 public enum Status {
 

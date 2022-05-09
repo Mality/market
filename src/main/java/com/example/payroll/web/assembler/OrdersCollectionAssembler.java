@@ -1,7 +1,7 @@
-package com.example.payroll.application.order;
+package com.example.payroll.web.assembler;
 
-import com.example.payroll.api.order.OrderController;
-import com.example.payroll.core.order.Order;
+import com.example.payroll.web.controller.OrderController;
+import com.example.payroll.persistence.model.Order;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;

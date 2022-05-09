@@ -1,6 +1,5 @@
-package com.example.payroll.core.order;
+package com.example.payroll.persistence.model;
 
-import com.example.payroll.core.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;

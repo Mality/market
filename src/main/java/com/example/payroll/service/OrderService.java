@@ -1,13 +1,13 @@
-package com.example.payroll.application.order;
+package com.example.payroll.service;
 
-import com.example.payroll.api.exceptions.NotEnoughUserBalanceException;
-import com.example.payroll.core.user.User;
-import com.example.payroll.api.exceptions.UserNotFoundException;
-import com.example.payroll.api.exceptions.MethodNotAllowedException;
-import com.example.payroll.core.user.UserRepository;
-import com.example.payroll.core.order.OrderRepository;
-import com.example.payroll.core.order.Order;
-import com.example.payroll.core.order.Status;
+import com.example.payroll.web.error.NotEnoughUserBalanceException;
+import com.example.payroll.persistence.model.User;
+import com.example.payroll.web.error.UserNotFoundException;
+import com.example.payroll.web.error.MethodNotAllowedException;
+import com.example.payroll.persistence.dao.UserRepository;
+import com.example.payroll.persistence.dao.OrderRepository;
+import com.example.payroll.persistence.model.Order;
+import com.example.payroll.persistence.model.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

@@ -1,10 +1,10 @@
-package com.example.payroll.api.user;
+package com.example.payroll.web.controller;
 
-import com.example.payroll.application.user.UserService;
-import com.example.payroll.core.user.User;
-import com.example.payroll.application.user.UserModelAssembler;
-import com.example.payroll.core.user.UserRepository;
-import com.example.payroll.api.exceptions.UserNotFoundException;
+import com.example.payroll.service.UserService;
+import com.example.payroll.persistence.model.User;
+import com.example.payroll.web.assembler.UserModelAssembler;
+import com.example.payroll.persistence.dao.UserRepository;
+import com.example.payroll.web.error.UserNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.CollectionModel;

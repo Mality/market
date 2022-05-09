@@ -1,6 +1,6 @@
-package com.example.payroll.application.user;
+package com.example.payroll.service;
 
-import com.example.payroll.core.user.UserRepository;
+import com.example.payroll.persistence.dao.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service

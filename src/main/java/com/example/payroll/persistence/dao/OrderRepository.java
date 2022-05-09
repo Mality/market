@@ -1,5 +1,6 @@
-package com.example.payroll.core.order;
+package com.example.payroll.persistence.dao;
 
+import com.example.payroll.persistence.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

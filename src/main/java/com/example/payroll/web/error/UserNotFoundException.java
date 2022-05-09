@@ -1,4 +1,4 @@
-package com.example.payroll.api.exceptions;
+package com.example.payroll.web.error;
 
 public class UserNotFoundException extends RuntimeException {
 
