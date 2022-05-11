@@ -3,28 +3,56 @@ package com.example.payroll.persistence.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user_account")
 public class User {
 
     private @Id @GeneratedValue Long id;
 
     private String name;
-    private String role;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id")}
+    )
+    private Set<Role> roles = new HashSet<>();
 
     private Long balance;
 
-//    @Transient
     private Long processedBalance = 0L;
 
     public User() {}
 
-    public User(String name, String role, Long balance) {
+    public User(String name, Long balance) {
         this.name = name;
-        this.role = role;
         this.balance = balance;
+    }
+
+    public User(String name, Long balance, Long processedBalance) {
+        this.name = name;
+        this.balance = balance;
+        this.processedBalance = processedBalance;
+    }
+
+    public User(String name, Set<Role> roles, Long balance, Long processedBalance) {
+        this.name = name;
+        this.roles = roles;
+        this.balance = balance;
+        this.processedBalance = processedBalance;
+    }
+
+    public void addRole(Role role) {
+        roles.add(role);
+    }
+
+    public void removeRole(Role role) {
+        roles.remove(role);
     }
 
     public Long getId() {
@@ -35,8 +63,8 @@ public class User {
         return name;
     }
 
-    public String getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
     public Long getBalance() {
@@ -60,8 +88,8 @@ public class User {
         this.name = name;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public void setBalance(Long balance) {
@@ -77,12 +105,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(role, user.role) && Objects.equals(balance, user.balance) && Objects.equals(processedBalance, user.processedBalance);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(roles, user.roles) && Objects.equals(balance, user.balance) && Objects.equals(processedBalance, user.processedBalance);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, role, balance, processedBalance);
+        return Objects.hash(id, name, roles, balance, processedBalance);
     }
 
     @Override
@@ -90,7 +118,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", role='" + role + '\'' +
+                ", roles=" + roles +
                 ", balance=" + balance +
                 ", processedBalance=" + processedBalance +
                 '}';

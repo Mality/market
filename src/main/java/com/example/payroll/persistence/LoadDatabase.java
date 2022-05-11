@@ -1,4 +1,4 @@
-package com.example.payroll;
+package com.example.payroll.persistence;
 
 import com.example.payroll.persistence.dao.UserRepository;
 import com.example.payroll.persistence.dao.OrderRepository;
