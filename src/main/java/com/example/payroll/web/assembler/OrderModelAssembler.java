@@ -1,6 +1,6 @@
 package com.example.payroll.web.assembler;
 
-import com.example.payroll.web.controller.OrderController;
+import com.example.payroll.web.controller.OrderRestController;
 import com.example.payroll.persistence.model.Order;
 import com.example.payroll.persistence.model.Status;
 import org.springframework.hateoas.EntityModel;
@@ -16,12 +16,12 @@ public class OrderModelAssembler implements RepresentationModelAssembler<Order, 
     @Override
     public EntityModel<Order> toModel(Order order) {
         EntityModel<Order> orderModer = EntityModel.of(order,
-                linkTo(methodOn(OrderController.class).getOrderById(order.getId())).withSelfRel(),
-                linkTo(methodOn(OrderController.class).getAllOrders()).withRel("orders"));
+                linkTo(methodOn(OrderRestController.class).getOrderById(order.getId())).withSelfRel(),
+                linkTo(methodOn(OrderRestController.class).getAllOrders()).withRel("orders"));
 
         if (order.getStatus() == Status.IN_PROGRESS) {
-            orderModer.add(linkTo(methodOn(OrderController.class).cancelOrder(order.getId())).withRel("cancel"));
-            orderModer.add(linkTo(methodOn(OrderController.class).completeOrder(order.getId())).withRel("complete"));
+            orderModer.add(linkTo(methodOn(OrderRestController.class).cancelOrder(order.getId())).withRel("cancel"));
+            orderModer.add(linkTo(methodOn(OrderRestController.class).completeOrder(order.getId())).withRel("complete"));
         }
 
         return orderModer;

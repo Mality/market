@@ -19,15 +19,15 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/users")
-public class UserController {
+public class UserRestController {
 
-    private final Logger log = LoggerFactory.getLogger(UserController.class);
+    private final Logger log = LoggerFactory.getLogger(UserRestController.class);
 
     private final UserService userService;
     private final UserRepository userRepository;
     private final UserModelAssembler userAssembler;
 
-    public UserController(UserService userService, UserRepository repository, UserModelAssembler assembler) {
+    public UserRestController(UserService userService, UserRepository repository, UserModelAssembler assembler) {
         this.userService = userService;
         this.userRepository = repository;
         this.userAssembler = assembler;
@@ -40,7 +40,7 @@ public class UserController {
                 .map(userAssembler::toModel)
                 .collect(Collectors.toList());
 
-        return CollectionModel.of(users, linkTo(methodOn(UserController.class).getAllUsers()).withSelfRel());
+        return CollectionModel.of(users, linkTo(methodOn(UserRestController.class).getAllUsers()).withSelfRel());
     }
 
     @PostMapping

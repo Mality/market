@@ -1,6 +1,6 @@
 package com.example.payroll.web.assembler;
 
-import com.example.payroll.web.controller.OrderController;
+import com.example.payroll.web.controller.OrderRestController;
 import com.example.payroll.persistence.model.Order;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -18,12 +18,12 @@ public class OrdersCollectionAssembler implements RepresentationModelAssembler<L
     @Override
     public CollectionModel<EntityModel<Order>> toModel(List<EntityModel<Order>> orders) {
         return CollectionModel.of(orders,
-                linkTo(methodOn(OrderController.class).getAllOrders()).withRel("orders"));
+                linkTo(methodOn(OrderRestController.class).getAllOrders()).withRel("orders"));
     }
 
     public CollectionModel<EntityModel<Order>> toModel(List<EntityModel<Order>> orders, Long userId) {
         return CollectionModel.of(orders,
-                linkTo(methodOn(OrderController.class).getAllOrdersByUserId(userId)).withSelfRel(),
-                linkTo(methodOn(OrderController.class).getAllOrders()).withRel("orders"));
+                linkTo(methodOn(OrderRestController.class).getAllOrdersByUserId(userId)).withSelfRel(),
+                linkTo(methodOn(OrderRestController.class).getAllOrders()).withRel("orders"));
     }
 }

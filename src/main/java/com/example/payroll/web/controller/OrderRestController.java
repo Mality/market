@@ -26,16 +26,16 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-public class OrderController {
+public class OrderRestController {
 
-    private final Logger log = LoggerFactory.getLogger(OrderController.class);
+    private final Logger log = LoggerFactory.getLogger(OrderRestController.class);
 
     private final OrderService orderService;
     private final OrderRepository orderRepository;
     private final OrderModelAssembler orderAssembler;
     private final OrdersCollectionAssembler ordersCollectionAssembler;
 
-    public OrderController(OrderService orderService, OrderRepository orderRepository, OrderModelAssembler orderAssembler, OrdersCollectionAssembler ordersCollectionAssembler) {
+    public OrderRestController(OrderService orderService, OrderRepository orderRepository, OrderModelAssembler orderAssembler, OrdersCollectionAssembler ordersCollectionAssembler) {
         this.orderService = orderService;
         this.orderRepository = orderRepository;
         this.orderAssembler = orderAssembler;
@@ -77,7 +77,7 @@ public class OrderController {
             log.info("New order " + newOrder);
 
             return ResponseEntity
-                    .created(linkTo(methodOn(OrderController.class).getOrderById(newOrder.getId())).toUri())
+                    .created(linkTo(methodOn(OrderRestController.class).getOrderById(newOrder.getId())).toUri())
                     .body(orderAssembler.toModel(newOrder));
         } catch (NotEnoughUserBalanceException ex) {
             return ResponseEntity
