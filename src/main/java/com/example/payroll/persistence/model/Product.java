@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Map;
+import java.util.Set;
 
 @Entity
 public class Product {
@@ -14,4 +15,7 @@ public class Product {
     private String description;
 
     private Integer cost;
+
+
+//    private Set<ProductCharacteristic> characteristics;
 }

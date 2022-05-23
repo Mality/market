@@ -87,7 +87,6 @@ public class OrderRestController {
                             .withTitle("Creation not allowed")
                             .withDetail(ex.getMessage()));
         }
-
     }
 
     @DeleteMapping("/orders/{id}/cancel")

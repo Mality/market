@@ -5,6 +5,8 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -20,8 +22,10 @@ public class Order {
     private User user;
 
     private String description;
+
     private Status status;
 
+    @Min(value = 0, message = "Cost should be greater than 0")
     private Long cost;
 
     public Order() {}

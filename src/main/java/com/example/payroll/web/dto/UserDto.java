@@ -10,19 +10,17 @@ import java.util.Objects;
 @MatchingPassword
 public class UserDto {
 
-    @NotBlank
-    @Length(min = 4, max = 20)
+    @NotBlank(message = "Name should not be blank")
+    @Length(min = 4, max = 30, message = "Length should be from 4 to 30 characters")
     private String name;
 
     @ValidEmail
     private String email;
 
     @NotBlank
-    @Length(min = 5, max = 100)
+    @Length(min = 5, max = 30, message = "Password should be from 5 to 30 characters")
     private String password;
 
-    @NotBlank
-    @Length(min = 5, max = 100)
     private String matchingPassword;
 
     public UserDto() {

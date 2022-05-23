@@ -1,8 +1,10 @@
 package com.example.payroll.persistence.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -14,6 +16,8 @@ public class User {
     private @Id @GeneratedValue Long id;
 
     private String name;
+    private String email;
+    private String password;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(

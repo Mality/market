@@ -9,8 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,11 +47,11 @@ public class UserRestController {
     }
 
     @PostMapping
-    public User createUser(@RequestBody User newUser) {
+    public ResponseEntity<User> createUser(@RequestBody @Valid User newUser) {
 
         User user = userRepository.save(newUser);
         log.info("User added " + user);
-        return user;
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/{id}")
@@ -61,7 +64,7 @@ public class UserRestController {
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@RequestBody User newUser, @PathVariable Long id) {
+    public User updateUser(@RequestBody @Valid User newUser, @PathVariable Long id) {
         return userRepository.findById(id).map(user -> {
             user.setName(newUser.getName());
             user.setRoles(newUser.getRoles());

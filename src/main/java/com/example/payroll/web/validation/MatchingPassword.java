@@ -10,5 +10,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = MatchingPasswordValidator.class)
 public @interface MatchingPassword {
+    String message() default "Not matching passwords";
 }
 
