@@ -10,6 +10,8 @@ import java.util.Objects;
 @MatchingPassword
 public class UserDto {
 
+    private Long id;
+
     @NotBlank(message = "Name should not be blank")
     @Length(min = 4, max = 30, message = "Length should be from 4 to 30 characters")
     private String name;
@@ -26,11 +28,20 @@ public class UserDto {
     public UserDto() {
     }
 
-    public UserDto(String name, String email, String password, String matchingPassword) {
+    public UserDto(Long id, String name, String email, String password, String matchingPassword) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.matchingPassword = matchingPassword;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -70,18 +81,19 @@ public class UserDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDto userDto = (UserDto) o;
-        return Objects.equals(name, userDto.name) && Objects.equals(email, userDto.email) && Objects.equals(password, userDto.password) && Objects.equals(matchingPassword, userDto.matchingPassword);
+        return Objects.equals(id, userDto.id) && Objects.equals(name, userDto.name) && Objects.equals(email, userDto.email) && Objects.equals(password, userDto.password) && Objects.equals(matchingPassword, userDto.matchingPassword);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, email, password, matchingPassword);
+        return Objects.hash(id, name, email, password, matchingPassword);
     }
 
     @Override
     public String toString() {
         return "UserDto{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", matchingPassword='" + matchingPassword + '\'' +

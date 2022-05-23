@@ -4,6 +4,7 @@ import com.example.payroll.service.UserService;
 import com.example.payroll.persistence.model.User;
 import com.example.payroll.web.assembler.UserModelAssembler;
 import com.example.payroll.persistence.dao.UserRepository;
+import com.example.payroll.web.dto.UserDto;
 import com.example.payroll.web.error.UserNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,9 +48,9 @@ public class UserRestController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody @Valid User newUser) {
+    public ResponseEntity<User> createUser(@RequestBody @Valid UserDto userDto) {
 
-        User user = userRepository.save(newUser);
+        User user = userService.save(userDto);
         log.info("User added " + user);
         return ResponseEntity.ok(user);
     }
@@ -64,16 +65,8 @@ public class UserRestController {
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@RequestBody @Valid User newUser, @PathVariable Long id) {
-        return userRepository.findById(id).map(user -> {
-            user.setName(newUser.getName());
-            user.setRoles(newUser.getRoles());
-            user.setBalance(newUser.getBalance());
-            return userRepository.save(user);
-        }).orElseGet(() -> {
-            newUser.setId(id);
-            return userRepository.save(newUser);
-        });
+    public User updateUser(@RequestBody @Valid UserDto userDto, @PathVariable Long id) {
+        return userService.updateUser(userDto);
     }
 
     @DeleteMapping("/{id}")

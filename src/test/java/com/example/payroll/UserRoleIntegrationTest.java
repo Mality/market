@@ -33,8 +33,8 @@ public class UserRoleIntegrationTest {
 
     @Test
     public void testUserRoles() {
-        User user1 = new User("user1", 100L);
-        User user2 = new User("user2", 100L);
+        User user1 = new User("user1", "user1@mail.ru",  "pass1", 101L);
+        User user2 = new User("user2", "user2@gmail.com", "pass2", 50L);
 
         Role role1 = new Role("user");
         Role role2 = new Role("admin");
