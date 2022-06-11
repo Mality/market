@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -61,7 +60,6 @@ public class UserRestController {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 
         return userAssembler.toModel(user);
-
     }
 
     @PutMapping("/{id}")
